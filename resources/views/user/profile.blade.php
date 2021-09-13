@@ -14,7 +14,7 @@
     </div>
 @endforeach
 @endif
-<div class="container" style="padding-top: 8%">
+<div class="container home-stats text-center" style="padding-top: 8%">
 <form method="POST" action="{{route('profile.update')}}">
   @csrf
   @method('PUT')
