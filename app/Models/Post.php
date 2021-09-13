@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use SoftDeletes;
+    protected $dates =['deleted_at'];
     protected $fillable = [
         'user_id',
         'title',
@@ -15,5 +16,16 @@ class Post extends Model
         'photo',
         'slug'
     ];
+ 
+    /**
+     * Get the user that owns the Post
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
     use HasFactory;
+   
 }

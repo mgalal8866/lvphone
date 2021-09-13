@@ -17,7 +17,12 @@ class PostController extends Controller
         
         //
     }
-
+    public function trashed()
+    {
+        
+        //
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -45,7 +50,7 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Post $post,$slug)
     {
         //
     }
@@ -56,7 +61,7 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Post $post,$id)
     {
         //
     }
@@ -68,7 +73,7 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Post $post,$id)
     {
         //
     }
@@ -79,7 +84,15 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post,$id)
+    {
+        //
+    }
+    public function hdelete(Post $post,$id)
+    {
+        //
+    }
+    public function restore(Post $post,$id)
     {
         //
     }
