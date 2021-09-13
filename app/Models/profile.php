@@ -14,5 +14,10 @@ class profile extends Model
         'bio',
         'facebook'
     ];
+ public function user(){
+      return $this->belongsto('App\Models\User','user_id');
+    }
     use HasFactory;
+    
 }
+
