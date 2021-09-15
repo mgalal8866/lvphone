@@ -6,10 +6,12 @@
       <div class="col">
         <div class="jumbotron">
             <h1 class="display-10">Create Post</h1>
+            <a class="btn btn-success" href="{{ route('posts.index') }}">Show Post</a>
           </div>
       </div>
       
     </div>
+    
     <div class="row">
 @if (count($errors)>0)
 <ul>

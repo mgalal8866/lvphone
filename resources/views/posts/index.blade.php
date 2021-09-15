@@ -37,10 +37,10 @@
                            class="img-tumbnail" width="100" height="100"> 
                         </td>
                         <td>
-                           <a href="{{route('posts.edit',['id',$item->id])}}">
+                           <a href="{{route('posts.edit',['id'=>$item->id])}}">
                             <i class="fas fa-2x fa-pen-square"></i></a>
                          
-                         <a class="text-danger" href="{{route('posts.destroy',['id',$item->id])}}">
+                         <a class="text-danger" href="{{route('posts.destroy',['id'=>$item->id])}}">
                             <i class="fas fa-2x fa-trash-alt"></i></a>
                          </td>
                       </tr> 

@@ -27,7 +27,7 @@ Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])
 //Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->name('profile');
 Route::PUT('/profile/update', 'App\Http\Controllers\ProfileController@update')->name('profile.update');
 
-Route::get('/posts', 'App\Http\Controllers\PostController@index')->name('posts');
+Route::get('/posts', 'App\Http\Controllers\PostController@index')->name('posts.index');
 Route::get('/posts/trashed', 'App\Http\Controllers\PostController@posttrashed')->name('posts.trashed');
 Route::get('/posts/create', 'App\Http\Controllers\PostController@create')->name('posts.create');
 Route::Post('/posts/store', 'App\Http\Controllers\PostController@store')->name('posts.store');

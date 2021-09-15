@@ -107,15 +107,14 @@ class PostController extends Controller
         $post = Post::find($id);
         $this->validate($request , [
             'title' => 'required' ,
-            'content' => 'required' ,
-           'photo'=> 'required|image' 
+            'content' => 'required' 
            ]);
+          // dd($request->all());
            if($request->has('photo')){
-               $photo = $request->photo;
-               $newphoto = time().$photo.getClientOrginalName();
-               $photo->move('uploads/posts',$newphoto);
-               $post->$photo = 'uploads/posts'.$newphoto;
-               //$post->save();
+            $photo = $request->photo;
+            $newphoto = time().$photo->getclientoriginalname();
+            $photo->move('uploads/posts',$newphoto);
+            $post->photo = 'uploads/posts/'.$newphoto;
            };
           
            $post->title = $request->title;
