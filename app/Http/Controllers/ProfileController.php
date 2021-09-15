@@ -23,6 +23,7 @@ class ProfileController extends Controller
            'gender' => 'male',
            'bio' => 'Hi',
            'facebook' => 'www.facebook.com'	
+        
         ]);
         }
         return view('user.profile')->with('user' , $user);

@@ -14,12 +14,15 @@ class PostController extends Controller
      */
     public function index()
     {
-        
+        $post = Post::all();
+        return view('post.index')->with('post',$post);
         //
     }
     public function trashed()
     {
-        
+        $post = Post::onlytrashed()->get();
+        return view('post.index')->with('post',$post);
+       
         //
     }
     
