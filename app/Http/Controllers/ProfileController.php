@@ -7,6 +7,11 @@ use Auth;
 use App\Models\profile;
 class ProfileController extends Controller
 {
+    //حمايه من الدخول من غير تسجيل
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
