@@ -11,6 +11,7 @@
       </div>
     </div>
     <a class="btn btn-success" href="{{route('posts.create')}}">Create Post</a>
+    <a class="btn btn-danger" href="{{route('posts.trashed')}}">Trash <i class="fas fa-trash-alt "></i></a>
     <div class="row">
         @if ($posts->count() > 0)
         <div class="col">
@@ -26,9 +27,13 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @php
+                    $i = 1;
+
+                  @endphp
                     @foreach ($posts as $item)
                     <tr>
-                        <th scope="row">1</th>
+                        <th scope="row">{{ $i++ }}</th>
                         <td>{{$item->title}}</td>
                         <td>{{$item->user->name}}</td>
                         <td>{{$item->content}}</td>
@@ -42,6 +47,10 @@
                          
                          <a class="text-danger" href="{{route('posts.destroy',['id'=>$item->id])}}">
                             <i class="fas fa-2x fa-trash-alt"></i></a>
+
+                            <a class="text-success" href="{{route('posts.show',['slug'=>$item->slug])}}">
+                              <i class="fas fa-2x fa-eye"></i></a>  
+                           
                          </td>
                       </tr> 
                     @endforeach

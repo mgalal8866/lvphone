@@ -23,7 +23,7 @@
 @endif
 
       <div class="col">
-        <form method="POST" action="{{route('posts.store')}}" enctype="multipart/form-data">
+        <form method="POST" action="{{route('posts.store')}}" enctype="multipart/form-data" >
             @csrf
            
             <div class="form-group">

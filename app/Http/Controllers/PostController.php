@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Auth;
-
+use Illuminate\Support\Str;
 class PostController extends Controller
 {
     public function __construct()
@@ -22,10 +22,11 @@ class PostController extends Controller
         $posts = Post::all();
         return view('posts.index')->with('posts',$posts);
     }
-    public function trashed()
+    public function posttrashed()
     {
-        $post = Post::onlytrashed()->get();
-        return view('posts.trashed')->with('post',$post);   
+    
+        $posts = Post::onlyTrashed()->where('user_id', Auth::id())->get();
+        return view('posts.trashed')->with('posts',$posts);
     }
     
     /**
@@ -48,25 +49,32 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $this->validate($request , [
-         'title' => 'required' ,
-         'content' => 'required' ,
-        'photo'=> 'required|image' 
+        $this->validate($request,[
+            'title' =>  'required',
+            'content' =>  'required',
+           
+            'photo' =>  'required|image',
         ]);
-        $photo = $request->photo;
-        $newphoto = time().$photo->getclientoriginalname();
-        $photo->move('uploads/posts',$newphoto);
-        $post = Post::create([
-            'user_id' => Auth::id(),
-        'title' => $request->title ,
-        'content' => $request->content  ,
-        'photo'=> 'uploads/posts/'.$newphoto ,
-        
-        'slug' => str_slug($request->title)
-]);
 
-        return redirect()->back();
+        $photo = $request->file('photo');
+        $newPhoto = time().$photo->getClientOriginalName () ;
+
+         
+        $photo->move('uploads/posts',$newPhoto);
+
+        $post = Post::create([
+            'user_id' =>  Auth::id(),
+            'title' =>  $request->title,
+            'content' =>   $request->content,
+            'photo' =>  'uploads/posts/'.$newPhoto,
+            'slug' =>  str_slug($request->title)
+        
+ 
+        ]);
+      
+
+        return redirect()->back() ;
+
     }
 
     /**
