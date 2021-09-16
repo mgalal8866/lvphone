@@ -146,7 +146,7 @@ class PostController extends Controller
     public function hdelete(Post $post,$id)
     {
         $post = Post::withTrashed()->where('id',$id)->first();
-        $post->forecDelete();
+        $post->forceDelete();
         return redirect()->back();
     }
     public function restore(Post $post,$id)

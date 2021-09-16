@@ -5,12 +5,12 @@
     <div class="row">
       <div class="col"> 
         <div class="jumbotron">
-            <h1 class="display-10"> Trashed Post</h1>
+            <h1 class="display-10"> All Post</h1>
             
           </div>
       </div>
     </div>
-    <a class="btn btn-success" href="{{route('posts.index')}}">All Post</a>
+    <a class="btn btn-success" href="{{route('posts.create')}}">Create Post</a>
     <a class="btn btn-danger" href="{{route('posts.trashed')}}">Trash <i class="fas fa-trash-alt "></i></a>
     <div class="row">
         @if ($posts->count() > 0)
@@ -42,12 +42,14 @@
                            class="img-tumbnail" width="100" height="100"> 
                         </td>
                         <td>
-                           
-                         <a class="text-danger" href="{{route('posts.hdelete',['id'=>$item->id])}}">
+                           <a href="{{route('posts.edit',['id'=>$item->id])}}">
+                            <i class="fas fa-2x fa-pen-square"></i></a>
+                         
+                         <a class="text-danger" href="{{route('posts.destroy',['id'=>$item->id])}}">
                             <i class="fas fa-2x fa-trash-alt"></i></a>
 
-                            <a class="text-success" href="{{route('posts.restore',['id'=>$item->id])}}">
-                             <i class="fas fa-2x fa-trash-restore"></i></a>  
+                            <a class="text-success" href="{{route('posts.show',['slug'=>$item->slug])}}">
+                              <i class="fas fa-2x fa-eye"></i></a>  
                            
                          </td>
                       </tr> 
