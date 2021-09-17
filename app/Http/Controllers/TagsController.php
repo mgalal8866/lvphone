@@ -14,28 +14,28 @@ class TagsController extends Controller
      */
     public function index()
     {
-        //
+    $tags = tags::all();
+    return view('tags.index')->with('tags' , $tags);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+      return view("tags.create");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
-        //
+     $this->validate($request,[
+         'tag' => 'required'
+     ]);
+
+     $tags = Tag::create([
+        'tag' =>  $request->tag
+       
+    ]);
+    return redirect()->back() ;
     }
 
     /**
@@ -49,27 +49,23 @@ class TagsController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\tags  $tags
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(tags $tags)
+    public function edit(tags $tags,$id)
     {
-        //
+        $tags = Tag::find($id);
+        return view('tags.edit')->with('tag',$tags);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\tags  $tags
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, tags $tags)
+    public function update(Request $request, tags $tags,$id)
+
     {
-        //
+    $tags = Tags::find($id);
+    $this->Validate($request,[
+        'tag' => 'required'
+    ]);
+
+    $tags->tag = $request->tag;
+    $tags->save();
+    return redirect()->back();
     }
 
     /**
@@ -78,8 +74,10 @@ class TagsController extends Controller
      * @param  \App\Models\tags  $tags
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tags $tags)
+    public function destroy($id)
     {
-        //
+        $tag = Tags::find($id);
+        $tag->delete();
+        return redirect()->back();
     }
 }

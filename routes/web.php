@@ -37,3 +37,11 @@ Route::Post('/posts/update/{id}', 'App\Http\Controllers\PostController@update')-
 Route::get('/posts/destroy/{id}', 'App\Http\Controllers\PostController@destroy')->name('posts.destroy');
 Route::get('/posts/hdelete/{id}', 'App\Http\Controllers\PostController@hdelete')->name('posts.hdelete');
 Route::get('/posts/restore/{id}', 'App\Http\Controllers\PostController@restore')->name('posts.restore');
+
+Route::get('/tags', 'App\Http\Controllers\TagsController@index')->name('tags.index');
+Route::get('/tags/create', 'App\Http\Controllers\TagsController@create')->name('tags.create');
+Route::Post('/tags/store', 'App\Http\Controllers\TagsController@store')->name('tags.store');
+Route::get('/tags/show/{slug}', 'App\Http\Controllers\TagsController@show')->name('tags.show');
+Route::get('/tags/edit/{id}', 'App\Http\Controllers\TagsController@edit')->name('tags.edit');
+Route::Post('/tags/update/{id}', 'App\Http\Controllers\TagsController@update')->name('tags.update');
+Route::get('/tags/destroy/{id}', 'App\Http\Controllers\TagsController@destroy')->name('tags.destroy');

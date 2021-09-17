@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\tags;
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Auth;
+use Auth; 
 use Illuminate\Support\Str;
 class PostController extends Controller
 {
@@ -36,8 +36,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
-        return view('posts.create'); 
+        $tags = tags::all();
+        if($tags->count() ==  0){
+            return  redirect()->route('tags.create');
+        }
+        return view('posts.create')->with('tags',$tags); 
 
     }
 
@@ -70,8 +73,8 @@ class PostController extends Controller
             'slug' =>  str_slug($request->title)
         
  
-        ]);
-      
+        ]); 
+        $post->tag()->attach($request->tags);
 
         return redirect()->back() ;
 
@@ -98,18 +101,12 @@ class PostController extends Controller
      */
     public function edit(Post $post,$id)
     {
+        $tags = tags::all();
         $post = Post::find($id);
-        return view('posts.edit')->with('post',$post);
+        return view('posts.edit')->with('post',$post)->with('tags',$tags);
  
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Post $post,$id)
     {
         $post = Post::find($id);
@@ -128,15 +125,11 @@ class PostController extends Controller
            $post->title = $request->title;
            $post->content = $request->content;
            $post->save();
+           $post->tag()->sync($request->tags);
            return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy(Post $post,$id)
     {
         $post = Post::find($id);

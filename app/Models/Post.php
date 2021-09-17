@@ -17,17 +17,19 @@ class Post extends Model
         'slug'
     ];
  
-    /**
-     * Get the user that owns the Post
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
+   
     public function user() 
     {
         return $this->belongsTo(User::class, 'user_id');
     }
  
-   
+     public function tag() 
+   {
+       return $this->belongsToMany(tags::Class,'post_tag','post_id', 'tag_id');
+ 
+ 
+    }
+     
     use HasFactory;
    
 }

@@ -5,12 +5,12 @@
     <div class="row">
       <div class="col">
         <div class="jumbotron">
-            <h1 class="display-10">Create Post</h1>
-            <a class="btn btn-success" href="{{ route('posts.index') }}">Show Post</a>
+            <h1 class="display-10">Create Tags</h1>
+            <a class="btn btn-success" href="{{ route('tags.index') }}">Show Tags</a>
           </div>
       </div>
       
-    </div>
+    </div>  
     
     <div class="row">
 @if (count($errors)>0)
@@ -23,24 +23,14 @@
 @endif
 
       <div class="col">
-        <form method="POST" action="{{route('posts.store')}}" enctype="multipart/form-data" >
+        <form method="POST" action="{{route('tags.store')}}"  >
             @csrf
            
             <div class="form-group">
-              <label for="exampleFormControlInput1">Title  : </label>
-              <input type="text" name="title" class="form-control"  >
+              <label for="exampleFormControlInput1">Name  : </label>
+              <input type="text" name="tag" class="form-control"  >
             </div>
           
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Content : </label>
-              <textarea class="form-control" name="content"  rows="3"></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="exampleFormControlInput1">photo  : </label>
-                <input type="file" name="photo" class="form-control" >
-              </div>
-            
             <div class="form-group">
                <button class="btn btn-danger" type="submit">Save</button>
               </div>

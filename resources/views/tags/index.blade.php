@@ -5,24 +5,21 @@
     <div class="row">
       <div class="col"> 
         <div class="jumbotron">
-            <h1 class="display-10"> All Post</h1>
+            <h1 class="display-10"> All Tags</h1>
             
           </div>
       </div>
     </div>
-    <a class="btn btn-success" href="{{route('posts.create')}}">Create Post</a>
-    <a class="btn btn-danger" href="{{route('posts.trashed')}}">Trash <i class="fas fa-trash-alt "></i></a>
+    <a class="btn btn-success" href="{{route('tags.create')}}">Create Tag</a>
+     
     <div class="row">
-        @if ($posts->count() > 0)
+        @if ($tags->count() > 0)
         <div class="col">
             <table class="table">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">user</th>
-                    <th scope="col">Content</th>
-                    <th scope="col">Photo</th>
+                    <th scope="col">Tag</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -31,26 +28,16 @@
                     $i = 1;
 
                   @endphp
-                    @foreach ($posts as $item)
+                    @foreach ($tags as $item)
                     <tr>
                         <th scope="row">{{ $i++ }}</th>
-                        <td>{{$item->title}}</td>
-                        <td>{{$item->user->name}}</td>
-                        <td>{{$item->content}}</td>
+                        <td>{{$item->tag}}</td>                
                         <td>
-                           <img src="{{URL::asset($item->photo)}}" alt="{{$item->Photo}}" 
-                           class="img-tumbnail" width="100" height="100"> 
-                        </td>
-                        <td>
-                           <a href="{{route('posts.edit',['id'=>$item->id])}}">
+                           <a href="{{route('tags.edit',['id'=>$item->id])}}">
                             <i class="fas fa-2x fa-pen-square"></i></a>
                          
-                         <a class="text-danger" href="{{route('posts.destroy',['id'=>$item->id])}}">
+                         <a class="text-danger" href="{{route('tags.destroy',['id'=>$item->id])}}">
                             <i class="fas fa-2x fa-trash-alt"></i></a>
-
-                            <a class="text-success" href="{{route('posts.show',['slug'=>$item->slug])}}">
-                              <i class="fas fa-2x fa-eye"></i></a>  
-                           
                          </td>
                       </tr> 
                     @endforeach
@@ -61,7 +48,7 @@
         </div>  
         @else
         <div class="alert alert-danger" role="alert">
-           No Posts .. 
+           No Tags .. 
           </div>
         @endif
 

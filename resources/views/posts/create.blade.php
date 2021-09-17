@@ -32,6 +32,14 @@
             </div>
           
             <div class="form-group">
+              @foreach ( $tags as $item)
+              <input type="checkbox" name="tags[]"  value="{{ $item->id }}" >
+              <label for="">{{ $item->tag }}</label> 
+              @endforeach
+            
+            </div>
+
+            <div class="form-group">
               <label for="exampleFormControlTextarea1">Content : </label>
               <textarea class="form-control" name="content"  rows="3"></textarea>
             </div>

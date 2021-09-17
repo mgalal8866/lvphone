@@ -30,7 +30,25 @@
               <label for="exampleFormControlInput1">Title  : </label>
               <input type="text" value="{{ $post->title }}" name="title" class="form-control"  >
             </div>
-          
+            <div class="form-group">
+              @foreach ( $tags as $item)
+              <input type="checkbox" name="tags[]"  value="{{ $item->id }}"
+              
+              @foreach ($post->tag as $item2)
+                @if($item->id ==  $item2->id){
+                  checked
+
+               @endif
+
+              @endforeach
+              
+              >
+              
+              
+              <label for="">{{ $item->tag }}</label> 
+              @endforeach
+            
+            </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Content : </label>
               <textarea class="form-control" name="content" rows="3">{{ $post->content }}</textarea>
