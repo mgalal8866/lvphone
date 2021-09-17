@@ -31,7 +31,7 @@ class TagsController extends Controller
          'tag' => 'required'
      ]);
 
-     $tags = Tag::create([
+     $tags = Tags::create([
         'tag' =>  $request->tag
        
     ]);
