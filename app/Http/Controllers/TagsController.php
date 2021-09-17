@@ -6,7 +6,10 @@ use App\Models\tags;
 use Illuminate\Http\Request;
 
 class TagsController extends Controller
-{
+{ public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -51,7 +54,7 @@ class TagsController extends Controller
 
     public function edit(tags $tags,$id)
     {
-        $tags = Tag::find($id);
+        $tags = tags::find($id);
         return view('tags.edit')->with('tag',$tags);
     }
 

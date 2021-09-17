@@ -19,7 +19,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        
+        //$posts = Post::where('user_id',Auth::id())->get();
+       $posts = Post::all();
         return view('posts.index')->with('posts',$posts);
     }
     public function posttrashed()
@@ -41,7 +43,12 @@ class PostController extends Controller
             return  redirect()->route('tags.create');
         }
         return view('posts.create')->with('tags',$tags); 
-
+       
+        $tags = Tag::all();
+        if ($tags->count() == 0) {
+            return   redirect()->route('tag.create');
+        }
+        return view('posts.create')->with('tags' ,  $tags);
     }
 
     /**

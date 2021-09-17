@@ -22,6 +22,7 @@
               <p class="card-text">{{$post->content}}</p>
               <p class="card-text"> Created at : {{$post->created_at->diffForHumans()}}</p>
               <p class="card-text"> Updated at : {{$post->updated_at->diffForHumans()}}</p>
+              <p class="card-text"> By  : {{$post->user->name}}</p>
               <a class="btn btn-success" href="{{ route('posts.index') }}">All Posts</a>
             </div>
           </div>

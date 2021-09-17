@@ -42,15 +42,17 @@
                            class="img-tumbnail" width="100" height="100"> 
                         </td>
                         <td>
-                           <a href="{{route('posts.edit',['id'=>$item->id])}}">
-                            <i class="fas fa-2x fa-pen-square"></i></a>
+                          <a class="text-success" href="{{route('posts.show',['slug'=>$item->slug])}}">
+                            <i class="fas fa-2x fa-eye"></i></a>  
                          
+                         @if ($item->user_id == Auth::id())
                          <a class="text-danger" href="{{route('posts.destroy',['id'=>$item->id])}}">
-                            <i class="fas fa-2x fa-trash-alt"></i></a>
-
-                            <a class="text-success" href="{{route('posts.show',['slug'=>$item->slug])}}">
-                              <i class="fas fa-2x fa-eye"></i></a>  
-                           
+                          <i class="fas fa-2x fa-trash-alt"></i></a>
+                          <a href="{{route('posts.edit',['id'=>$item->id])}}">
+                            <i class="fas fa-2x fa-pen-square"></i></a>
+                      
+                         @endif
+                        
                          </td>
                       </tr> 
                     @endforeach
