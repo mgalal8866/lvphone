@@ -5,13 +5,13 @@
     <div class="row">
       <div class="col"> 
         <div class="jumbotron">
-            <h1 class="display-10"> All Post</h1>
+            <h1 class="display-10">{{ __('All Post') }}</h1>
             
           </div>
       </div>
     </div>
-    <a class="btn btn-success" href="{{route('posts.create')}}">Create Post</a>
-    <a class="btn btn-danger" href="{{route('posts.trashed')}}">Trash <i class="fas fa-trash-alt "></i></a>
+    <a class="btn btn-success" href="{{route('posts.create')}}">{{ __('Create Post') }} </a>
+    <a class="btn btn-danger" href="{{route('posts.trashed')}}">{{ __('Trash') }} <i class="fas fa-trash-alt "></i></a>
     <div class="row">
         @if ($posts->count() > 0)
         <div class="col">
