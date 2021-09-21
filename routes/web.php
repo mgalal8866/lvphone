@@ -12,15 +12,27 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(app()->getLocale());
 });
+Route::group([
+    'prefix' => '{locale}',
+    'where' => ['locale' => 'ar|en'],
+    'middleware' => 'setlocale',
+], function () {
+
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('welcome');
+});
+ 
+
+
 Route::get('/admin1', function () {
     return view('layout.admin');
    
 });
- 
+
 Route::resource('msaref','App\Http\Controllers\MsarefController');
 Auth::routes();
 
@@ -49,3 +61,4 @@ Route::get('/tags/show/{slug}', 'App\Http\Controllers\TagsController@show')->nam
 Route::get('/tags/edit/{id}', 'App\Http\Controllers\TagsController@edit')->name('tags.edit');
 Route::Post('/tags/update/{id}', 'App\Http\Controllers\TagsController@update')->name('tags.update');
 Route::get('/tags/destroy/{id}', 'App\Http\Controllers\TagsController@destroy')->name('tags.destroy');
+

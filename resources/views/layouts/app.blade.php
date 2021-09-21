@@ -29,8 +29,8 @@
                 </a>
                 <div class="navbar-collapse collapse show">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <a class="nav-link" href="{{Route('posts.index')}}"> {{ __('Post') }} </a>
-                <a class="nav-link" href="{{ route('tags.index') }}"> {{ __('Tags') }} </a>
+                <a class="nav-link" href="{{Route('posts.index')}}"> {{ __('ms.Post') }} </a>
+                <a class="nav-link" href="{{ route('tags.index') }}"> {{ __('ms.Tags') }} </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -100,4 +100,16 @@
         </main>
     </div>
 </body>
+
+<footer>
+    <ul>
+        <li>
+            <a href="{{ route(request()->route()->getName(), 'ar') }}">AR</a>
+        </li>
+        <li>
+            <a href="{{ route(request()->route()->getName(), 'en') }}">EN</a>   
+        </li>
+    </ul>
+</footer>
+
 </html>

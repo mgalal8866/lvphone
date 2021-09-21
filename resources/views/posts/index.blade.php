@@ -5,13 +5,13 @@
     <div class="row">
       <div class="col"> 
         <div class="jumbotron">
-            <h1 class="display-10">{{ __('All Post') }}</h1>
+            <h1 class="display-10">{{ __('ms.All Posts') }}</h1>
             
           </div>
       </div>
     </div>
-    <a class="btn btn-success" href="{{route('posts.create')}}">{{ __('Create Post') }} </a>
-    <a class="btn btn-danger" href="{{route('posts.trashed')}}">{{ __('Trash') }} <i class="fas fa-trash-alt "></i></a>
+    <a class="btn btn-success" href="{{route('posts.create')}}">{{ __('ms.Create Post') }} </a>
+    <a class="btn btn-danger" href="{{route('posts.trashed')}}">{{ __('ms.Trash') }} <i class="fas fa-trash-alt "></i></a>
     <div class="row">
         @if ($posts->count() > 0)
         <div class="col">
@@ -19,11 +19,11 @@
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">user</th>
-                    <th scope="col">Content</th>
-                    <th scope="col">Photo</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">{{ __('ms.Title') }}</th>
+                    <th scope="col">{{ __('ms.user') }}</th>
+                    <th scope="col">{{ __('ms.Content') }}</th>
+                    <th scope="col">{{ __('ms.Photo') }} </th>
+                    <th scope="col">{{ __('ms.Action') }}</th>
                   </tr>
                 </thead>
                 <tbody>

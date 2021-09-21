@@ -19,8 +19,8 @@
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Tag</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">{{ __('ms.Tag') }}</th>
+                    <th scope="col">{{ __('ms.Action') }}</th>
                   </tr>
                 </thead>
                 <tbody>
