@@ -8,6 +8,7 @@
 <title>@yield('title')</title>
 </head>
 <body>
+  
   @section('sidebar')
             This is the master sidebar.
   @show

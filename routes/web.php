@@ -16,7 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/admin1', function () {
+    return view('layout.admin');
+   
+});
+ 
 Route::resource('msaref','App\Http\Controllers\MsarefController');
 Auth::routes();
 
